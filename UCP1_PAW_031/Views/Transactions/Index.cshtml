@@ -1,0 +1,129 @@
+﻿@model IEnumerable<UCP1_PAW_031.Models.Transaction>
+
+@{
+    ViewData["Title"] = "Transactions Data";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container w-full h-full mt-10 pt-5 px-6">
+   <h2 class="my-6 text-2xl ml-2 font-semibold text-gray-700 dark:text-gray-200">
+         Transactions Data Information
+   </h2>
+   <div class="flex items-center justify-between p-4 mb-8 px-2 ml-2 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
+          <div class="flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <span>Manage this data</span>
+          </div>
+          <a class="text-white hover:no-underline focus:no-underline" asp-action="Create">
+             <span>Create New &RightArrow;</span>
+          </a>
+  </div>
+    <div class="w-full overflow-hidden rounded-lg shadow-xs md:w-auto xl:w-full mx-auto px-3">
+         <div class="w-full">
+             <table class="w-full whitespace-no-wrap shadow-md divide-y divide-gray-200" id="table_data">
+                <thead class="bg-gray-50">
+                    <tr class="text-xs font-high tracking-wider text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                        <th class="px-4 py-3">
+                             @Html.DisplayName("Transaction Date")
+                        </th>
+                        <th class="px-4 py-3">
+                             @Html.DisplayName("Name")
+                        </th>
+                        <th class="px-4 py-3">
+                            @Html.DisplayName("Beach Name")
+                        </th>
+                        <th class="px-4 py-3">
+                            @Html.DisplayName("Driver Name")
+                        </th>
+                        <th class="px-4 py-3">
+                            @Html.DisplayName("Price")
+                        </th>
+                        <th class="px-4 py-3">
+                             @Html.DisplayName("City")
+                        </th>
+                        <th class="px-4 py-3">
+                              @Html.DisplayName("Province")
+                        </th>
+                        <th class="px-4 py-3">
+                              @Html.DisplayName("Postal Code")
+                        </th>
+                        <th class="px-4 py-3">
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    @foreach (var item in Model)
+                    {
+                       <tr class="text-gray-700 dark:text-gray-400">
+                      <td class="px-4 py-3 bg-blue-200 whitespace-nowrap">
+                        <div class="flex items-center">
+                            <div class="text-sm font-semibold text-gray-900">
+                              @Html.DisplayFor(modelItem => item.TanggalTransaksi)
+                            </div>
+                        </div>
+                      </td>
+                      <td class="px-4 py-3 text-xs whitespace-nowrap">
+                        <span class="px-2 py-1 inline-flex font-semibold leading-tight text-red-400 bg-blue-100 rounded-full dark:bg-blue-700 dark:text-red-100">
+                          @Html.DisplayFor(modelItem => item.User.Name)
+                        </span>
+                      </td>
+                       <td class="px-4 py-3 text-sm text-gray-900 whitespace-nowrap">
+                         @Html.DisplayFor(modelItem => item.Beach.BeachName)
+                      </td>
+                      <td class="px-4 py-3 text-sm text-gray-900 whitespace-nowrap">
+                         @Html.DisplayFor(modelItem => item.Driver.DriverName)
+                      </td>
+                      <td class="px-4 py-3 whitespace-nowrap">
+                        <div class="text-sm text-gray-500">@Html.DisplayFor(modelItem => item.Price)</div>
+                      </td> 
+                      <td class="px-4 py-3 whitespace-nowrap">
+                        <div class="text-sm text-gray-500">@Html.DisplayFor(modelItem => item.City)</div>
+                      </td>                 
+                      <td class="px-4 py-3 text-sm text-gray-500 whitespace-nowrap">
+                         @Html.DisplayFor(modelItem => item.Province)
+                      </td>
+                      <td class="px-4 py-3 text-sm text-gray-500 whitespace-nowrap">
+                         @Html.DisplayFor(modelItem => item.PostalCode)
+                      </td>
+                      <td class="px-4 py-3 text-sm font-medium whitespace-nowrap">
+                        <div class="inline-flex">
+                              <a class="btn-md bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l" asp-area="@item.City"asp-action="Details" asp-route-id="@item.TransactionId">
+                                 <i class="fas fa-info-circle"></i>
+                              </a>
+                              <a class="btn-md bg-blue-500 hover:bg-blue-600 text-gray-300 hover:text-white font-bold py-2 px-4" asp-area="@item.City"asp-action="Edit" asp-route-id="@item.TransactionId">
+                                 <i class="fas fa-edit"></i>
+                              </a>
+                              <a class="btn-md bg-red-500 hover:bg-red-600 text-gray-300 hover:text-white font-bold py-2 px-4 rounded-r" asp-area="@item.City"asp-action="Delete" asp-route-id="@item.TransactionId">
+                                 <i class="fas fa-trash-alt"></i>
+                              </a>
+                        </div>
+                      </td>
+                   </tr>
+                    }               
+                </tbody>
+             </table>
+         </div>
+    </div>
+
+    @if (TempData["message"] != null) {
+    <div class="alert-toast fixed bottom-0 right-0 m-8 w-7/8 md:w-full max-w-sm">
+    <input type="checkbox" class="hidden" id="footertoast">
+
+    <label class="close cursor-pointer px-2 flex items-center opacity-90 justify-between w-full p-2 bg-yellow-500 font-medium rounded shadow-lg text-white" title="close" for="footertoast">
+      <span class="text-xl inline-block mr-2 ml-6 align-middle">
+        <i class="fas fa-bell"></i>
+      </span>
+      <span class="inline-block align-middle mr-10 pr-6 text-sm px-auto">
+           @TempData["message"]
+      </span>
+      <button class="inline-block bg-transparent text-2xl font-semibold leading-none right-0 top-0 align-middle mr-6 outline-none focus:outline-none" onclick="closeAlert(event)">
+        <span>×</span>
+
+      </button>
+    </label>
+  </div>
+   }
+</div>

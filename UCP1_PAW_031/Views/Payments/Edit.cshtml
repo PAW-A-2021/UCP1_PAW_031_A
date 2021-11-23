@@ -1,0 +1,112 @@
+﻿@model UCP1_PAW_031.Models.Payment
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<nav class="flex bg-blue-50 text-blue-700 border border-blue-200 py-3 px-auto rounded-lg mb-4 mt-10 pt-5" aria-label="Breadcrumb">
+  <ol class="container ml-auto pl-4 inline-flex items-center space-x-1 md:space-x-3">
+    <li class="inline-flex items-center">
+      <a asp-action="Index" asp-controller="Home" class="text-blue-700 hover:text-blue-900 hover:no-underline inline-flex items-center">
+        <svg class="w-5 h-5 mr-auto" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+      </a>
+    </li>
+    <li>
+      <div class="flex items-center">
+        <svg class="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+        <a asp-action="Index" asp-controller="Payments" class="text-blue-700 hover:text-blue-900 hover:no-underline ml-1 md:ml-2 text-sm font-medium">Data Payment</a>
+      </div>
+    </li>
+    <li aria-current="page">
+      <div class="flex items-center">
+        <svg class="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+        <span class="text-blue-400 ml-1 md:ml-2 text-sm font-medium">Edit Data</span>
+      </div>
+    </li>
+    <li aria-current="page">
+      <div class="flex items-center">
+        <svg class="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+        <span class="text-blue-400 ml-1 md:ml-2 text-sm font-medium">@Html.DisplayFor(model => model.Status)</span>
+      </div>
+    </li>
+  </ol>
+</nav>
+
+<main class="container h-full">
+     <div class="overflow-x-hidden sm:mt-0 px-2 py-4">
+      <div class="md:grid md:grid-cols-3 md:gap-6">
+        <div class="md:col-span-1">
+          <div class="px-2 sm:px-0">
+            <h3 class="text-lg font-medium leading-6 text-gray-900">Edit payment data</h3>
+            <p class="mt-1 text-sm text-gray-600">
+              Edit data you want to change.
+            </p>
+          </div>
+        </div>
+        <div class="mt-2 md:mt-0 md:col-span-2">
+          <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PaymentId" />
+            <div class="shadow-md sm:rounded-lg">
+              <div class="px-4 py-5 bg-indigo-100 sm:p-6">
+                <div class="grid grid-cols-6 gap-6">
+                  <div class="col-span-6 sm:col-span-3">
+                      <label asp-for="TransactionId" class="block text-sm font-medium text-gray-700">Price</label>
+                      <select asp-for="TransactionId" asp-items="ViewBag.TransactionId" class="w-full bg-purple-50 pl-2 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none shadow-sm rounded-md focus:ring-indigo-500 focus:border-indigo-500"></select>
+                      <span asp-validation-for="TransactionId" class="text-danger"></span>
+                  </div>
+                  <div class="col-span-6 sm:col-span-3">
+                      <label asp-for="Total" class="block text-sm font-medium text-gray-700">Total</label>
+                      <input asp-for="Total" type="text" class="w-full bg-purple-50 pl-2 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none shadow-sm rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                      <span asp-validation-for="Total" class="text-danger"></span>
+                  </div>
+                  <div class="col-span-6 sm:col-span-3">
+                      <label asp-for="Status" class="block text-sm font-medium text-gray-700">Status</label>
+                      <input asp-for="Status" type="text" class="w-full bg-purple-50 pl-2 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none shadow-sm rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                      <span asp-validation-for="Status" class="text-danger"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex grid-cols-6 flex justify-end bg-blue-50">
+                  <div class="px-4 py-3 text-right sm:px-6">
+                    <a asp-action="Index" class="btn inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-50 hover:text-gray-100 bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                      Back
+                    </a>
+                  </div>
+                  <div class="px-4 py-3 text-right sm:px-6">
+                    <button type="button" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" data-toggle="modal" data-target="#modalChoice">
+                      Save
+                    </button>
+                  </div>
+                   <div class="modal fade modal-alert opacity-85" id="modalChoice" tabindex="-1" aria-hidden="true">
+                       <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content shadow">
+                                 <div class="modal-content rounded-4 shadow bg-white">
+                                        <div class="modal-header text-center">
+                                                <i class="fas fa-edit text-7xl flex items-center text-green-300 mx-auto"></i>
+                                        </div>
+                                        <div class="modal-body p-4 text-center">
+                                                <h5 class="mb-2 text-green-500 font-bold">Are you sure want to update this data?</h5>
+                                                <p class="mb-0 text__delete__2">You can still change your mind in edit page.</p>
+                                        </div>
+                                        <div class="modal-footer flex-nowrap p-0">
+                                                <input type="submit" value="Yes, update" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-right bg-yellow-400 hover:bg-yellow-500 font-medium text-gray-50 hover:text-gray-100" /> 
+                                                <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 bg-blue-500 hover:bg-blue-600 font-medium text-green-50 hover:text-green-100" data-dismiss="modal">No, thanks</button>
+                                        </div>
+                                 </div>
+                            </div>
+                       </div>
+                    </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</main>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

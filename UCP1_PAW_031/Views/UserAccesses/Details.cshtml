@@ -1,0 +1,110 @@
+﻿@model UCP1_PAW_031.Models.UserAccess
+
+@{
+    ViewData["Title"] = "Details Data";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<nav class="flex bg-blue-50 text-blue-700 border border-blue-200 py-3 px-auto rounded-lg mb-4 mt-10 pt-5" aria-label="Breadcrumb">
+  <ol class="container ml-auto pl-4 inline-flex items-center space-x-1 md:space-x-3">
+    <li class="inline-flex items-center">
+      <a asp-action="Index" asp-controller="Home" class="text-blue-700 hover:text-blue-900 hover:no-underline inline-flex items-center">
+        <svg class="w-5 h-5 mr-auto" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+      </a>
+    </li>
+    <li>
+      <div class="flex items-center">
+        <svg class="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+        <a asp-action="Index" asp-controller="UserAccesses" class="text-blue-700 hover:text-blue-900 hover:no-underline ml-1 md:ml-2 text-sm font-medium">Data User</a>
+      </div>
+    </li>
+    <li aria-current="page">
+      <div class="flex items-center">
+        <svg class="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+        <span class="text-blue-400 ml-1 md:ml-2 text-sm font-medium">Detail Data</span>
+      </div>
+    </li>
+     <li aria-current="page">
+      <div class="flex items-center">
+        <svg class="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+        <span class="text-blue-400 ml-1 md:ml-2 text-sm font-medium">@Html.DisplayFor(model => model.Name)</span>
+      </div>
+    </li>
+  </ol>
+</nav>
+
+<main class="container h-full px-6">
+<div class="bg-white shadow overflow-hidden sm:rounded-lg">
+  <div class="px-4 py-3 sm:px-6">
+    <h3 class="text-lg leading-6 font-medium text-gray-900">
+      Data Information
+    </h3>
+    <p class="mt-1 max-w-2xl text-sm text-gray-500">
+      Personal details.
+    </p>
+  </div>
+    <dl class="border-t border-gray-200">
+      <div class="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+           @Html.DisplayName("Nama")
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          @Html.DisplayFor(model => model.Name)
+        </dd>
+      </div>
+      <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+           @Html.DisplayName("Id Card")
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+           @Html.DisplayFor(model => model.IdCard)
+        </dd>
+      </div>
+      <div class="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+           @Html.DisplayName("Email")
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            <span class="px-2 py-1 inline-flex font-medium leading-tight text-green-700 bg-yellow-300 rounded-full dark:bg-green-700 dark:text-green-100">
+                 @Html.DisplayFor(model => model.Email)
+            </span>
+        </dd>
+      </div>
+      <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+          @Html.DisplayName("Phone")
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          @Html.DisplayFor(model => model.Phone)
+        </dd>
+      </div>
+      <div class="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+           @Html.DisplayName("Address")
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          @Html.DisplayFor(model => model.Address)
+        </dd>
+      </div>
+      <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+          Menu
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <ul role="list" class="border border-gray-200 rounded-md divide-y divide-gray-200">
+            <li class="pl-3 pr-4 py-3 flex items-center justify-end grid-cols-6 text-sm">
+              <div class="ml-4 flex-shrink-0">
+                <a asp-action="Edit" asp-route-id="@Model.UserId" class="btn bg-yellow-600 hover:bg-yellow-500 font-medium text-gray-50 hover:text-gray-100">
+                  Edit
+                </a>
+                <a asp-action="Index" class="btn bg-purple-600 hover:bg-purple-500 font-medium text-green-50 hover:text-green-100">
+                  Back
+                </a>
+              </div>
+            </li>
+          </ul>
+        </dd>
+      </div>
+    </dl>
+</div>
+</main>
